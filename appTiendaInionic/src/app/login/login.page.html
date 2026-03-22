@@ -20,11 +20,14 @@
       <ion-label position="floating">Contraseña</ion-label>
       <ion-input formControlName="password" type="password"></ion-input>
     </ion-item>
-
   </form>
-  <ion-button (click)="ingresar()">
-    Ingresar
-  </ion-button>
 
-
+  <div style="display: flex; gap: 10px; justify-content: center;">
+    <ion-button (click)="ingresar()">
+      Ingresar
+    </ion-button>
+    <ion-button [routerLink]="['/registro']" fill="outline">
+      Registro
+    </ion-button>
+  </div>
 </ion-content>
