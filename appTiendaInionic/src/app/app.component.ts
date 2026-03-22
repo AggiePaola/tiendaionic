@@ -13,12 +13,13 @@ import { mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutlin
 })
 export class AppComponent {
   public appPages = [
-
-    { title: 'home', url: '/folder/home', icon: 'warning' },
-    { title: 'customers', url: '/folder/customers', icon: 'warning' },
+    { title: 'Home', url: '/folder/Home', icon: 'mail' },
+    { title: 'Customer', url: '/folder/Customer', icon: 'paper-plane' },
   ];
-
+  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor() {
     addIcons({ mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp });
+    document.body.classList.remove('dark');
   }
+
 }

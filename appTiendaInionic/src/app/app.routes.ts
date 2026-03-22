@@ -1,9 +1,10 @@
 import { Routes } from '@angular/router';
 
+
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/inbox',
+    redirectTo: 'login',
     pathMatch: 'full',
   },
   {
@@ -13,14 +14,15 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    loadComponent: () => import('./home/home.page').then( m => m.HomePage)
+    loadComponent: () => import('./home/home.page').then(m => m.HomePage)
   },
   {
     path: 'customers',
-    loadComponent: () => import('./customers/customers.page').then( m => m.CustomersPage)
-  },  {
+    loadComponent: () => import('./customers/customers.page').then(m => m.CustomersPage)
+  },
+  {
     path: 'login',
-    loadComponent: () => import('./login/login.page').then( m => m.LoginPage)
+    loadComponent: () => import('./login/login.page').then(m => m.LoginPage)
   },
 
 ];
