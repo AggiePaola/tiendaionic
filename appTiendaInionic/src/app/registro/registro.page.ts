@@ -1,6 +1,7 @@
-import { Component, OnInit, importProvidersFrom } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import {
   IonContent, IonHeader, IonTitle, IonToolbar, IonBackButton, IonButtons, IonCard, IonCardHeader,
   IonCardTitle, IonCardContent, IonItem, IonLabel, IonButton
@@ -16,7 +17,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
   imports: [
     CommonModule,
     FormsModule,
-    importProvidersFrom(ReactiveFormsModule),  // ✅ así se importa ReactiveFormsModule
+    ReactiveFormsModule,  // ✅ así se importa ReactiveFormsModule
     IonContent,
     IonHeader,
     IonTitle,
