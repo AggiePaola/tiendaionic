@@ -6,15 +6,12 @@
 
 <ion-content>
 
-  <!-- Loading -->
   <ion-spinner *ngIf="cargando" style="display:block; margin:20px auto;"></ion-spinner>
 
-  <!-- Botón carrito -->
   <ion-button routerLink="/carrito" expand="block" color="warning">
-    Ver carrito 🛒
+    Ver carrito
   </ion-button>
 
-  <!-- Productos -->
   <ion-card *ngFor="let producto of productos">
 
     <img [src]="producto.image" />
@@ -28,7 +25,7 @@
     </ion-card-content>
 
     <ion-button expand="full" color="success" (click)="agregarAlCarrito(producto)">
-      Agregar al carrito 🛒
+      Agregar al carrito
     </ion-button>
 
   </ion-card>

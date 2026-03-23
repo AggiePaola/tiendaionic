@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Carrito 🛒</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card *ngFor="let p of cartService.obtenerCarrito()">
+
+    <ion-card-header>
+      <ion-card-title>{{ p.title }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>Precio: ${{ p.price }}</p>
+      <p>Cantidad: {{ p.cantidad }}</p>
+
+      <ion-button color="danger" (click)="cartService.eliminar(p.id)">
+        Eliminar
+      </ion-button>
+
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-item>
+    <ion-label><strong>Total: ${{ cartService.total() }}</strong></ion-label>
+  </ion-item>
+
+  <ion-button expand="full" color="medium" (click)="cartService.limpiar()">
+    Vaciar carrito
+  </ion-button>
+
+</ion-content>

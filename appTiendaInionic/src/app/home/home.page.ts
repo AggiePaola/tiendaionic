@@ -3,13 +3,17 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { CartService } from '../services/cart';
+import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
   standalone: true,
-  imports: [CommonModule, IonicModule]
+  imports: [CommonModule, IonicModule, RouterModule]
 })
 export class HomePage implements OnInit {
 
@@ -18,7 +22,8 @@ export class HomePage implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private cartService: CartService
+    private cartService: CartService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -38,6 +43,9 @@ export class HomePage implements OnInit {
   agregarAlCarrito(producto: any) {
     this.cartService.agregar(producto);
     console.log('Agregado al carrito:', producto.title);
+  }
+  irAlCarrito() {
+    this.router.navigateByUrl('/carrito');
   }
 
 }

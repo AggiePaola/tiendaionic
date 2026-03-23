@@ -28,4 +28,8 @@ export class CartService {
   total() {
     return this.carrito.reduce((sum, p) => sum + (p.price * p.cantidad), 0);
   }
+
+  limpiar() {
+    this.carrito = [];
+  }
 }
