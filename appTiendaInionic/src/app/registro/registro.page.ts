@@ -38,6 +38,18 @@ export class RegistroPage implements OnInit {
       return;
     }
 
-    console.log('Formulario válido:', this.formularioRegistro.value);
+    // Obtener los valores del formulario
+    const f = this.formularioRegistro.value;
+
+    console.log('Formulario válido:', f);
+
+    // Guardar en localStorage
+    const usuario = {
+      nombre: f.nombre,
+      password: f.password
+    };
+    localStorage.setItem('usuario', JSON.stringify(usuario));
+
+    console.log('Usuario guardado en localStorage:', usuario);
   }
 }
