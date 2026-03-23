@@ -1,17 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, importProvidersFrom } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonBackButton, IonButtons, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem, IonLabel, IonButton } from '@ionic/angular/standalone';
+import {
+  IonContent, IonHeader, IonTitle, IonToolbar, IonBackButton, IonButtons, IonCard, IonCardHeader,
+  IonCardTitle, IonCardContent, IonItem, IonLabel, IonButton
+} from '@ionic/angular/standalone';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+
 
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.page.html',
   styleUrls: ['./registro.page.scss'],
   standalone: true,
-  imports: [IonContent,
-    IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonBackButton,
-    IonButtons, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem, IonLabel, IonButton]
+  imports: [
+    CommonModule,
+    FormsModule,
+    importProvidersFrom(ReactiveFormsModule),  // ✅ así se importa ReactiveFormsModule
+    IonContent,
+    IonHeader,
+    IonTitle,
+    IonToolbar,
+    IonBackButton,
+    IonButtons,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardContent,
+    IonItem,
+    IonLabel,
+    IonButton
+  ]
 })
 export class RegistroPage implements OnInit {
   formularioRegistro: FormGroup;
@@ -28,6 +47,10 @@ export class RegistroPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+  guardar() {
+    // método vacío, solo para que compile
+    console.log("Presionaste Guardar");
   }
 
 }

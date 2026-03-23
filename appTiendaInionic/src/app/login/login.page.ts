@@ -26,5 +26,9 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
   }
+  ingresar() {
+    // método vacío, solo para que compile
+    console.log("Presionaste Ingresar");
+  }
 
 }
