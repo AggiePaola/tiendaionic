@@ -7,6 +7,7 @@ import {
   IonLabel, IonItem, IonInput, IonCard, IonCardHeader,
   IonButton, IonFooter, IonButtons
 } from '@ionic/angular/standalone';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ import {
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,   // ✅ necesario para formControlName
+    ReactiveFormsModule,
     RouterModule,
     IonContent,
     IonHeader,
@@ -24,7 +25,7 @@ import {
     IonToolbar,
     IonLabel,
     IonItem,
-    IonInput,              // ✅ MUY IMPORTANTE
+    IonInput,
     IonCard,
     IonCardHeader,
     IonButton,
@@ -35,7 +36,7 @@ import {
 export class LoginPage implements OnInit {
   formularioLogin: FormGroup;
 
-  constructor(public fb: FormBuilder) {
+  constructor(public fb: FormBuilder, private router: Router) {
     this.formularioLogin = this.fb.group({
       nombre: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
@@ -46,5 +47,6 @@ export class LoginPage implements OnInit {
 
   ingresar() {
     console.log("Presionaste Ingresar");
+    this.router.navigateByUrl('/home');
   }
 }
