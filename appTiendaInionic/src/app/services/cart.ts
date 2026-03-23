@@ -7,6 +7,15 @@ export class CartService {
 
   private carrito: any[] = [];
 
+  constructor() {
+    const data = localStorage.getItem('carrito');
+    this.carrito = data ? JSON.parse(data) : [];
+  }
+
+  private guardar() {
+    localStorage.setItem('carrito', JSON.stringify(this.carrito));
+  }
+
   agregar(producto: any) {
     const item = this.carrito.find(p => p.id === producto.id);
 
@@ -15,6 +24,8 @@ export class CartService {
     } else {
       this.carrito.push({ ...producto, cantidad: 1 });
     }
+
+    this.guardar();
   }
 
   obtenerCarrito() {
@@ -23,6 +34,7 @@ export class CartService {
 
   eliminar(id: number) {
     this.carrito = this.carrito.filter(p => p.id !== id);
+    this.guardar();
   }
 
   total() {
@@ -31,5 +43,6 @@ export class CartService {
 
   limpiar() {
     this.carrito = [];
+    this.guardar();
   }
 }
