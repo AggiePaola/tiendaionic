@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import {
-  IonContent, IonHeader, IonTitle, IonToolbar, IonBackButton, IonButtons, IonCard, IonCardHeader,
-  IonCardTitle, IonCardContent, IonItem, IonLabel, IonButton
-} from '@ionic/angular/standalone';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { IonicModule, AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-registro',
@@ -17,41 +11,33 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,  // ✅ así se importa ReactiveFormsModule
-    IonContent,
-    IonHeader,
-    IonTitle,
-    IonToolbar,
-    IonBackButton,
-    IonButtons,
-    IonCard,
-    IonCardHeader,
-    IonCardTitle,
-    IonCardContent,
-    IonItem,
-    IonLabel,
-    IonButton
+    ReactiveFormsModule,
+    IonicModule
   ]
 })
 export class RegistroPage implements OnInit {
   formularioRegistro: FormGroup;
-  constructor(public fb: FormBuilder) {
+
+  constructor(public fb: FormBuilder, public alertController: AlertController) {
     this.formularioRegistro = this.fb.group({
-      'nombre': new FormControl("", Validators.required),
-      'password': new FormControl("", [Validators.required]),
-      'confirmacionPassword': new FormControl("", [Validators.required]),
-    })
-
-
-
-
+      nombre: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
+      confirmacionPassword: new FormControl('', Validators.required),
+    });
   }
 
-  ngOnInit() {
-  }
-  guardar() {
-    // método vacío, solo para que compile
-    console.log("Presionaste Guardar");
-  }
+  ngOnInit() { }
 
+  async guardar() {
+    if (this.formularioRegistro.invalid) {
+      const alert = await this.alertController.create({
+        message: 'Por favor completa todos los campos.',
+        buttons: ['Aceptar']
+      });
+      await alert.present();
+      return;
+    }
+
+    console.log('Formulario válido:', this.formularioRegistro.value);
+  }
 }
