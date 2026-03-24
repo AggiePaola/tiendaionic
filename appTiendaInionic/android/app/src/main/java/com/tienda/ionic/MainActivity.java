@@ -1,4 +1,4 @@
-package com.tienda.app;
+package com.tienda.ionic;
 
 import com.getcapacitor.BridgeActivity;
 

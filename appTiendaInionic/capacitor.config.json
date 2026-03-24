@@ -1,0 +1,6 @@
+{
+    "appId": "com.tienda.ionic",
+    "appName": "TiendaIonic",
+    "webDir": "www",
+    "bundledWebRuntime": false
+}
